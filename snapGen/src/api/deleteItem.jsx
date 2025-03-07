@@ -2,7 +2,7 @@ import { supabase } from '../supabaseClient.js';
 
 export const deleteItem = async (id) => {
   const { data, error } = await supabase
-    .from('items')
+    .from('items2')
     .delete()
     .eq('id', id);
 

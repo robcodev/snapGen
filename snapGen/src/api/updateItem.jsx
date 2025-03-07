@@ -2,7 +2,7 @@ import { supabase } from '../supabaseClient.js';
 
 export const updateItem = async (id, updates) => {
   const { data, error } = await supabase
-    .from('items')
+    .from('items2')
     .update(updates)
     .eq('id', id);
 

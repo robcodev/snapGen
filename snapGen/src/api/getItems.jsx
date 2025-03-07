@@ -2,7 +2,7 @@ import { supabase } from '../supabaseClient.js';
 
 export const getItems = async () => {
   const { data, error } = await supabase
-    .from('items')
+    .from('items2')
     .select('*');
 
   if (error) {
