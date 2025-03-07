@@ -1,6 +1,18 @@
 import '/frontEnd/App.css';
+import { useState } from "react";
 
-function Form() {
+const Form = ({ setFormData }) => {
+
+    const [localData, setLocalData] = useState({
+        nombreEntrada: "",
+        nombrePlatoFondo: "",
+        nombrePostre: ""
+    });
+
+    const handleChange = (e) => {
+        setFormData({...localData, [e.target.name]: e.target.value});
+        setLocalData({...localData, [e.target.name]: e.target.value});
+    }
 
     return (
         <>
@@ -25,24 +37,98 @@ function Form() {
                     AGREGADOS COMO BAJATIVOS
                             */}
 
-            <section className={'grid grid-cols-12 h-400'}>
-                <div className={'col-span-1 bg-gray-50'}>
-                    <p>O</p>
-                </div>
-
-                <div className={'col-span-4 bg-gray-100 items-center justify-center'}>
-                    <form action="" method={'POST'} className={'mt-5 w-3/4 bg-white'}>
-                        <label htmlFor="postNombreEntrada"></label>
-                        <input type="text" placeholder={'nombre entrada'}/>
-
-                    </form>
-                    <button type={'submit'} className={'w-1/2 p-4 m-4 text-xl hover:font-bold hover:bg-white rounded bg-blue'}>Descargar</button>
+                    <h1
+                        className={'text-start font-bold text-xl mb-10'}>
+                        Crear un nuevo archivo
+                    </h1>
 
 
-                </div>
+                    <div>
+                        <p
+                            className={'text-start font-bold text-sm block'}>
+                            Entradas</p>
+                        <div
+                            className={'flex gap-2'}>
+                            <form action=""
+                                  method={'POST'}>
+                                <label htmlFor="postNombreEntrada"></label>
+                                <input
+                                    type="text"
+                                    placeholder={'nombre entrada'}
+                                    name="nombreEntrada"
+                                    value={localData.nombreEntrada}
+                                    onChange={handleChange}
+                                    className={'bg-white border-1 border-black rounded '}
+                                />
 
-                <div className={'col-span-7 bg-gray-200'}></div>
-            </section>
+                            </form>
+                            <button
+                                type={"button"}
+                                className={'font-bold text-white bg-blue-300 rounded p-1 px-2 hover:bg-blue-300 focus:bg-blue-400'}>
+                                +
+                            </button>
+                        </div>
+                    </div>
+
+                    <div>
+                        <p
+                            className={'text-start font-bold text-sm block'}>
+                            Platos de Fondo</p>
+                        <div
+                            className={'flex gap-2'}>
+                            <form action=""
+                                  method={'POST'}>
+                                <label htmlFor="postNombreplatoFondo"></label>
+                                <input
+                                    type="text"
+                                    placeholder={'Nombre plato fondo'}
+                                    className={'bg-white border-1 border-black rounded '}
+                                    name="nombrePlatoFondo"
+                                    value={localData.nombrePlatoFondo}
+                                    onChange={handleChange}
+                                />
+
+                            </form>
+                            <button
+                                type={"button"}
+                                className={'font-bold text-white bg-blue-300 rounded p-1 px-2 hover:bg-blue-300 focus:bg-blue-400'}>
+                                +
+                            </button>
+                        </div>
+                    </div>
+
+                    <div>
+                        <p
+                            className={'text-start font-bold text-sm block'}>
+                            Postres</p>
+                        <div
+                            className={'flex gap-2'}>
+                            <form action=""
+                                  method={'POST'}>
+                                <label htmlFor="postNombrePostre"></label>
+                                <input
+                                    type="text"
+                                    placeholder={'Nombre Postre'}
+                                    className={'bg-white border-1 border-black rounded '}
+                                    name="nombrePostre"
+                                    value={localData.nombrePostre}
+                                    onChange={handleChange}
+                                />
+
+                            </form>
+                            <button
+                                type={"button"}
+                                className={'font-bold text-white bg-blue-300 rounded p-1 px-2 hover:bg-blue-300 focus:bg-blue-400'}>
+                                +
+                            </button>
+                        </div>
+                    </div>
+
+                    <button type={'submit'}
+                            className={'w-1/2 p-4 m-4 text-xl hover:font-bold hover:bg-white rounded bg-blue-300'}>Descargar
+                    </button>
+
+
 
             {/*
 
