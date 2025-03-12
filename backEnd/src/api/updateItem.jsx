@@ -1,7 +1,7 @@
 import { supabase } from '../supabaseClient.js';
 
 
-const updateItem = async (id, newDescription) => {
+export const updateItem = async (id, newDescription) => {
   const { data, error } = await supabase
     .from('menuDiario')
     .update({ descripcion: newDescription })
@@ -14,7 +14,6 @@ const updateItem = async (id, newDescription) => {
   }
 };
 
-export default updateItem;
 
 /* export const updateItem = async (id, updates) => {
   const { data, error } = await supabase

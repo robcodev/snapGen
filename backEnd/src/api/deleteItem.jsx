@@ -1,6 +1,6 @@
 import { supabase } from '../supabaseClient.js';
 
-const deleteItem = async (id) => {
+export const deleteItem = async (id) => {
   const { data, error } = await supabase
     .from('menuDiario')
     .delete()
@@ -13,7 +13,6 @@ const deleteItem = async (id) => {
   }
 };
 
-export default deleteItem;
 
 /* export const deleteItem = async (id) => {
   const { data, error } = await supabase

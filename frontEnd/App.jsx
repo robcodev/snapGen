@@ -1,7 +1,8 @@
 import './App.css';
 import Form from "./assets/components/form.jsx";
 import Preview from "./assets/components/preview.jsx";
-import {useState} from "react";
+import React, {useState} from "react";
+import TestComponent from "../backEnd/src/components/TestComponents.jsx";
 function App(){
 
     const [formData, setFormData] = useState({
@@ -20,15 +21,18 @@ function App(){
             </nav>
         </header>
 
+        <h1>CRUD Test</h1>
+        <TestComponent/>
+
         <section
             className={'grid grid-cols-12 h-196 mt-4'}>
             <div className={'col-span-4 bg-gray-100 items-center justify-center p-5'}>
                 <Form setFormData={setFormData}/>
             </div>
 
-                <div className={'col-span-7 bg-gray-200  flex items-center'}>
-                    <Preview formData={formData}/>
-                </div>
+            <div className={'col-span-7 bg-gray-200  flex items-center'}>
+                <Preview formData={formData}/>
+            </div>
         </section>
 
 

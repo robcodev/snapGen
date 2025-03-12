@@ -1,6 +1,6 @@
 import { supabase } from '../supabaseClient.js';
 
-const createItem = async (formData) => {
+export const createItem = async (formData) => {
   for (const category in formData) {
     // Buscar la categoría
     let { data: categoryData, error: categoryError } = await supabase
@@ -49,7 +49,6 @@ const createItem = async (formData) => {
   }
 };
 
-export default createItem;
 
 /* export const createItem = async (item) => {
   const { data, error } = await supabase

@@ -1,6 +1,6 @@
 import { supabase } from '../supabaseClient.js';
 
-const getItems = async () => {
+export const getItems = async () => {
   const { data: menuData, error: menuError } = await supabase
     .from('menuDiario')
     .select('*');
@@ -22,7 +22,6 @@ const getItems = async () => {
   return { menuData, categoriesData };
 };
 
-export default getItems;
 
 /* 
 //Esto funciona BIEN
