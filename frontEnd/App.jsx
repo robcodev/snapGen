@@ -2,7 +2,6 @@ import './App.css';
 import Form from "./assets/components/form.jsx";
 import Preview from "./assets/components/preview.jsx";
 import {useState} from "react";
-import TestComponent from "../backEnd/src/components/TestComponents.jsx";
 import html2canvas from "html2canvas";
 function App(){
 
@@ -83,9 +82,6 @@ function App(){
                 className={'bg-[black] px-4 py-2 rounded-md text-white'}
             >Descargar Imagen</button>
         </section>
-
-        <TestComponent/>
-
 
     </>
 }
