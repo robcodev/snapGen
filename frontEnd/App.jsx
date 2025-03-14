@@ -35,7 +35,7 @@ function App(){
         const canva = document.getElementById('canva');
 
         const canvas = await html2canvas(canva, {
-            scale: 2,
+            scale: 4,
             useCORS: true,
         });
         const dataURL = canvas.toDataURL("image/png");
