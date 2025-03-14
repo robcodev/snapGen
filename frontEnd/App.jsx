@@ -34,12 +34,6 @@ function App(){
     const handleDownload = async ()=>{
         const canva = document.getElementById('canva');
 
-        if(!canva){
-            console.error("No se encontró la cosa del canva")
-        }
-        if (canva){
-            console.log('Si está leyendo el canva');
-        }
         const canvas = await html2canvas(canva, {
             scale: 2,
             useCORS: true,
@@ -48,9 +42,9 @@ function App(){
 
         const link = document.createElement("a");
         link.href = dataURL;
-        link.download = `${dataURL}.png`;
+        link.download = `snapGen.png`;
         link.click();
-        document.body.removeChild(link);
+        await document.body.removeChild(link);
     }
 
     return <>
