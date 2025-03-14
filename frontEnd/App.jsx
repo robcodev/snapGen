@@ -44,7 +44,6 @@ function App(){
         link.href = dataURL;
         link.download = `snapGen.png`;
         link.click();
-        await document.body.removeChild(link);
     }
 
     return <>
