@@ -43,7 +43,7 @@ const Form = ({setDataForm, imageChange}) => {
                             name="titulo"
                             value={localData.titulo}
                             onChange={handleChange}
-                            className={'bg-white border-1 border-black rounded '}
+                            className={' border-1 rounded '}
                         />
 
                     </form>
@@ -63,7 +63,7 @@ const Form = ({setDataForm, imageChange}) => {
                         <input
                             type="text"
                             placeholder={'Variedades - 100 unidades'}
-                            className={'bg-white border-1 border-black rounded '}
+                            className={' border-1 rounded '}
                             name="subtitulo"
                             value={localData.subtitulo}
                             onChange={handleChange}
