@@ -6,9 +6,9 @@ import html2canvas from "html2canvas";
 import Header from "./assets/components/appHeader.jsx";
 function App(){
 
-    function formatearPrecios(numero){
-        return Number(numero).toLocaleString('es-CL');
-    }
+    // function formatearPrecios(numero){
+    //     return Number(numero).toLocaleString('es-CL');
+    // }
 
     const [dataForm, setDataForm] = useState({
         titulo: "",
@@ -33,18 +33,29 @@ function App(){
     }
 
     const handleDownload = async ()=>{
-        const canva = document.getElementById('canva');
 
-        const canvas = await html2canvas(canva, {
-            scale: 4,
-            useCORS: true,
-        });
-        const dataURL = canvas.toDataURL("image/png");
-
-        const link = document.createElement("a");
-        link.href = dataURL;
-        link.download = `snapGen.png`;
-        link.click();
+        html2canvas(document.getElementById("canva"), {useCORS: true, scale: 4}).then((canvas)=>{
+            canvas.toBlob((blob)=>{
+                const link = document.createElement("a");
+                link.href = URL.createObjectURL(blob);
+                link.download = "historiaTCG.png";
+                document.body.appendChild(link);
+                link.click();
+            })
+        })
+        //
+        // const canva = document.getElementById('canva');
+        //
+        // const canvas = await html2canvas(canva, {
+        //     scale: 4,
+        //     useCORS: true,
+        // });
+        // const dataURL = canvas.toDataURL("image/png");
+        //
+        // const link = document.createElement("a");
+        // link.href = dataURL;
+        // link.download = `snapGen.png`;
+        // link.click();
     }
 
     return <>
@@ -67,7 +78,7 @@ function App(){
                 </button>
             </div>
 
-            <div className={'col-span-1  rounded border border-gray-300 shadow'}>
+            <div className={'col-span-1  max-w-124 rounded border border-gray-300 shadow'}>
 
                     <Preview dataForm={dataForm}/>
             </div>
