@@ -1,133 +1,171 @@
 import '/frontEnd/App.css';
-import { useState } from "react";
+import {useRef, useState} from "react";
 
-const Form = ({ setFormData }) => {
+const Form = ({setDataForm, imageChange}) => {
 
-    const [localData, setLocalData] = useState({
-        nombreEntrada: "",
-        nombrePlatoFondo: "",
-        nombrePostre: ""
+   const [localData, setLocalData] = useState({
+        titulo: "",
+        subtitulo: "",
+        descripcion: "",
+        precioNormal: "",
+        precioOferta: "",
+        imagenProducto: "",
+        imagenFondo: "",
+        logoProducto: "",
     });
 
     const handleChange = (e) => {
-        setFormData({...localData, [e.target.name]: e.target.value});
-        setLocalData({...localData, [e.target.name]: e.target.value});
+        setDataForm(prev => ({...prev, [e.target.name]: e.target.value}));
+        setLocalData(prev => ({...prev, [e.target.name]: e.target.value}));
+    }
+    const imgInputRef = useRef(null);
+
+    const botonClick = ()=>{
+        imgInputRef.current.click();
     }
 
     return (
         <>
-            {/*    pARA EL KIKE DEBERIA TENER:
 
-        1- PREVENTA? --> boleano
-        2- NOMBRE PRODUCTO --> Texto
-        3- DESCRIPCIÓN
-        4- PRECIO
-        5- IMAGEN PRODUCTO --> Texto URL --> Subirla (Supa buckets --> URL)
-        6- IMAGEN FONDO --> ""
-        7- LOGO PRODUCTO --> ""
+            <section>
+                <div className={'mb-3'}>
 
-        --> ENTRADAS
-            ENSALADA CESAR
-            CAUSA LIMEÑA
+                    <p className={'text-sm text-gray-400 text-start font-sans'}>Personaliza el contenido y apariencia de
+                        tu plantilla</p>
 
-            --> FONDOS
-                --> POSTRES
-                    --> BEBESTIBLES
+                </div>
 
-                    AGREGADOS COMO BAJATIVOS
-                            */}
+                <div className={'w-full rounded bg-gray-300 h-8 mb-3'}></div>
+            </section>
 
-                    <h1
-                        className={'text-start font-bold text-xl mb-10'}>
-                        Crear un nuevo archivo
-                    </h1>
+            <div>
+                <p
+                    className={'text-start font-bold leading-loose text-sm block'}>
+                    Titulo</p>
+                <div>
+                    <form action=""
+                          method={'POST'}>
+                        <label htmlFor="titulo"></label>
+                        <input
+                            type="text"
+                            placeholder={'Protectores Dragon Shield'}
+                            name="titulo"
+                            value={localData.titulo}
+                            onChange={handleChange}
+                            className={' border border-gray-300 p-2 rounded w-full h-8 mb-3'}
+                        />
 
+                    </form>
 
-                    <div>
-                        <p
-                            className={'text-start font-bold text-sm block'}>
-                            Entradas</p>
-                        <div
-                            className={'flex gap-2'}>
-                            <form action=""
-                                  method={'POST'}>
-                                <label htmlFor="postNombreEntrada"></label>
-                                <input
-                                    type="text"
-                                    placeholder={'nombre entrada'}
-                                    name="nombreEntrada"
-                                    value={localData.nombreEntrada}
-                                    onChange={handleChange}
-                                    className={'bg-white border-1 border-black rounded '}
-                                />
+                </div>
+            </div>
 
-                            </form>
+            <div>
+                <p
+                    className={'text-start font-bold text-sm block leading-loose'}>
+                    Subtitulo</p>
+                <div>
+                    <form action=""
+                          method={'POST'}>
+                        <label htmlFor="subtitulo"></label>
+                        <input
+                            type="text"
+                            placeholder={'Variedades - 100 unidades'}
+                            className={' border border-gray-300 rounded w-full h-8 mb-3 p-2'}
+                            name="subtitulo"
+                            value={localData.subtitulo}
+                            onChange={handleChange}
+                        />
+
+                    </form>
+
+                </div>
+            </div>
+
+            {/*<div>*/}
+            {/*    <p*/}
+            {/*        className={'text-start font-bold text-sm block'}>*/}
+            {/*        Descripción</p>*/}
+            {/*    <div*/}
+            {/*        className={'flex gap-2'}>*/}
+            {/*        <form action=""*/}
+            {/*              method={'POST'}>*/}
+            {/*            <label htmlFor="descripcion"></label>*/}
+            {/*            <input*/}
+            {/*                type="text"*/}
+            {/*                placeholder={'descripcion'}*/}
+            {/*                className={'bg-white border-1 border-black rounded '}*/}
+            {/*                name="descripcion"*/}
+            {/*                value={localData.descripcion}*/}
+            {/*                onChange={handleChange}*/}
+            {/*            />*/}
+
+            {/*        </form>*/}
+
+            {/*    </div>*/}
+            {/*</div>*/}
+
+            <div>
+                <p
+                    className={'text-start font-bold text-sm block'}>
+                    Precio normal</p>
+                <div>
+                    <form action=""
+                          method={'POST'}>
+                        <label htmlFor="precio"></label>
+                        <input
+                            type={'text'}
+                            placeholder={'Precio normal'}
+                            className={'bg-white border border-gray-300 rounded w-full h-8 mb-3 p-2'}
+                            name="precioNormal"
+                            value={localData.precioNormal}
+                            onChange={handleChange}
+                        />
+                    </form>
+                </div>
+            </div>
+
+            <div>
+                <h4 className={'text-start font-bold text-sm leading-loose'}>
+                    Precio Oferta
+                </h4>
+                <div>
+                    <form action="">
+                        <label htmlFor="precioOferta"></label>
+                        <input className={'bg-white border border-gray-300 rounded h-8 p-2 mb-3 w-full'}
+                               type="text"
+                               placeholder={'Precio Oferta'}
+                               name="precioOferta"
+                               value={localData.precioOferta}
+                               onChange={handleChange}
+                        />
+                    </form>
+                </div>
+            </div>
+
+            <div>
+                <div className={'w-full'}>
+                    <form action="" method={'post'} id='imgForm'>
+                        <div>
+
                             <button
-                                type={"button"}
-                                className={'font-bold text-white bg-blue-300 rounded p-1 px-2 hover:bg-blue-300 focus:bg-blue-400'}>
-                                +
+                                type={'button'}
+                                onClick={botonClick}
+                                className={'bg-white border border-gray-300 rounded w-full h-8 my-3 cursor-pointer hover:bg-gray-50'}
+                            >
+                                Subir Imagen
                             </button>
+
+                            <input
+                                ref={imgInputRef}
+                                id="imgUpload"
+                                type="file"
+                                accept="image/*"
+                                onChange={imageChange}/>
                         </div>
-                    </div>
-
-                    <div>
-                        <p
-                            className={'text-start font-bold text-sm block'}>
-                            Platos de Fondo</p>
-                        <div
-                            className={'flex gap-2'}>
-                            <form action=""
-                                  method={'POST'}>
-                                <label htmlFor="postNombreplatoFondo"></label>
-                                <input
-                                    type="text"
-                                    placeholder={'Nombre plato fondo'}
-                                    className={'bg-white border-1 border-black rounded '}
-                                    name="nombrePlatoFondo"
-                                    value={localData.nombrePlatoFondo}
-                                    onChange={handleChange}
-                                />
-
-                            </form>
-                            <button
-                                type={"button"}
-                                className={'font-bold text-white bg-blue-300 rounded p-1 px-2 hover:bg-blue-300 focus:bg-blue-400'}>
-                                +
-                            </button>
-                        </div>
-                    </div>
-
-                    <div>
-                        <p
-                            className={'text-start font-bold text-sm block'}>
-                            Postres</p>
-                        <div
-                            className={'flex gap-2'}>
-                            <form action=""
-                                  method={'POST'}>
-                                <label htmlFor="postNombrePostre"></label>
-                                <input
-                                    type="text"
-                                    placeholder={'Nombre Postre'}
-                                    className={'bg-white border-1 border-black rounded '}
-                                    name="nombrePostre"
-                                    value={localData.nombrePostre}
-                                    onChange={handleChange}
-                                />
-
-                            </form>
-                            <button
-                                type={"button"}
-                                className={'font-bold text-white bg-blue-300 rounded p-1 px-2 hover:bg-blue-300 focus:bg-blue-400'}>
-                                +
-                            </button>
-                        </div>
-                    </div>
-
-                    <button type={'submit'}
-                            className={'w-1/2 p-4 m-4 text-xl hover:font-bold hover:bg-white rounded bg-blue-300'}>Descargar
-                    </button>
-
+                    </form>
+                </div>
+            </div>
 
 
             {/*

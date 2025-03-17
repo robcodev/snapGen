@@ -46,8 +46,6 @@ const TestComponent = () => {
 
     testCRUDOperations();
   }, []);
-
-  return <div>Check the console for test results</div>;
 };
 
 export default TestComponent;

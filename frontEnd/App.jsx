@@ -1,40 +1,79 @@
 import './App.css';
 import Form from "./assets/components/form.jsx";
 import Preview from "./assets/components/preview.jsx";
-import React, {useState} from "react";
-import TestComponent from "../backEnd/src/components/TestComponents.jsx";
+import {useState} from "react";
+import html2canvas from "html2canvas";
+import Header from "./assets/components/appHeader.jsx";
 function App(){
 
-    const [formData, setFormData] = useState({
-        nombreEntrada: "",
-        nombrePlatoFondo: "",
-        nombrePostre: ""
+    function formatearPrecios(numero){
+        return Number(numero).toLocaleString('es-CL');
+    }
+
+    const [dataForm, setDataForm] = useState({
+        titulo: "",
+        subtitulo: "",
+        descripcion: "",
+        precioNormal: "",
+        precioOferta: "",
+        imagenProducto: "",
+        imagenFondo: "",
+        logoProducto: ""
     });
 
-    return <>
-        <header>
-            <nav className={'flex align-between'}>
-                <h1 className={'text-start text-2xl'}>
-                    SnapGen
-                </h1>
-                <div className={'w-4 h-4'}>x</div>
-            </nav>
-        </header>
+    const handleImageChange = (e) => {
+        const file = e.target.files[0];
+        if (file){
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setDataForm(prevData => ({...prevData, imagenProducto: reader.result}))
+            };
+            reader.readAsDataURL(file);
+        }
+    }
 
-        <h1>CRUD Test</h1>
-        <TestComponent/>
+    const handleDownload = async ()=>{
+        const canva = document.getElementById('canva');
+
+        const canvas = await html2canvas(canva, {
+            scale: 4,
+            useCORS: true,
+        });
+        const dataURL = canvas.toDataURL("image/png");
+
+        const link = document.createElement("a");
+        link.href = dataURL;
+        link.download = `snapGen.png`;
+        link.click();
+    }
+
+    return <>
+
+        <Header/>
+
 
         <section
-            className={'grid grid-cols-12 h-196 mt-4'}>
-            <div className={'col-span-4 bg-gray-100 items-center justify-center p-5'}>
-                <Form setFormData={setFormData}/>
+            className={'grid md:grid-cols-2 sm:grid-cols-1  mt-4 h-full gap-4'}>
+
+            <div className={'col-span-1 items-center justify-center p-5 rounded border border-gray-300 shadow h-fit'}>
+                <Form setDataForm={setDataForm} imageChange={handleImageChange}/>
+
+                <button
+                    onClick={handleDownload}
+                    type={'button'}
+                    className={'bg-black rounded text-white w-full p-2 mt-4 cursor-pointer hover:bg-gray-800'}
+                >Descargar Imagen
+
+                </button>
             </div>
 
-            <div className={'col-span-7 bg-gray-200  flex items-center'}>
-                <Preview formData={formData}/>
+            <div className={'col-span-1  rounded border border-gray-300 shadow'}>
+
+                    <Preview dataForm={dataForm}/>
             </div>
+
+
         </section>
-
 
     </>
 }
