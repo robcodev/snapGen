@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+/* import React, { useEffect, useState } from 'react';
 import { getItems, createItem, updateItem, deleteItem } from './api';
 
 const ItemList = () => {
@@ -28,10 +28,12 @@ const ItemList = () => {
   return (
     <div>
       <h1>Item List</h1>
-      {/* Aquí puedes agregar tus formularios y lógica para crear, actualizar y eliminar items */}
+      {
+    }
       <p>Aqui van los items</p>
     </div>
   );
 };
 }
 export default ItemList;
+ */
