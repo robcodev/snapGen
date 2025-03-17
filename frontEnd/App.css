@@ -32,20 +32,32 @@
 
 #root {
   max-width: 1280px;
+  min-height: 100vh;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
 }
 
-#preview {
+.preview {
 
   padding: 2em ;
-  aspect-ratio: 9/16; /* Mantiene la proporcion 1080x1350*/
+  aspect-ratio: 9/16;
   font-weight: bold;
   background-image: url("../frontEnd/assets/imgs/background.webp");
   background-size: cover;
   background-repeat: no-repeat;
 }
+.autoResize {
+  overflow: visible;
+  white-space: pre;
+  transform: scale(var(--efiScale, 1));
+  transform-origin: center top ;
+  margin-bottom: calc(var(--efiHeightDiff, 0));
+/*  convierte el mb en un margen dinamico para compensar las transformaciones*/
+  box-sizing: border-box;
+  display: table;
+}
+
 
 input[type="file"]{
   display: none;

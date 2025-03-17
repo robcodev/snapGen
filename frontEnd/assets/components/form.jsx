@@ -1,5 +1,5 @@
 import '/frontEnd/App.css';
-import {useState} from "react";
+import {useRef, useState} from "react";
 
 const Form = ({setDataForm, imageChange}) => {
 
@@ -18,22 +18,31 @@ const Form = ({setDataForm, imageChange}) => {
         setDataForm(prev => ({...prev, [e.target.name]: e.target.value}));
         setLocalData(prev => ({...prev, [e.target.name]: e.target.value}));
     }
+    const imgInputRef = useRef(null);
+
+    const botonClick = ()=>{
+        imgInputRef.current.click();
+    }
 
     return (
         <>
 
-            <h1
-                className={'text-start font-bold text-xl mb-10'}>
-                Crear un nuevo archivo
-            </h1>
+            <section>
+                <div className={'mb-3'}>
 
+                    <p className={'text-sm text-gray-400 text-start font-sans'}>Personaliza el contenido y apariencia de
+                        tu plantilla</p>
+
+                </div>
+
+                <div className={'w-full rounded bg-gray-300 h-8 mb-3'}></div>
+            </section>
 
             <div>
                 <p
-                    className={'text-start font-bold text-sm block'}>
+                    className={'text-start font-bold leading-loose text-sm block'}>
                     Titulo</p>
-                <div
-                    className={'flex gap-2'}>
+                <div>
                     <form action=""
                           method={'POST'}>
                         <label htmlFor="titulo"></label>
@@ -43,7 +52,7 @@ const Form = ({setDataForm, imageChange}) => {
                             name="titulo"
                             value={localData.titulo}
                             onChange={handleChange}
-                            className={' border-1 rounded '}
+                            className={' border border-gray-300 p-2 rounded w-full h-8 mb-3'}
                         />
 
                     </form>
@@ -53,17 +62,16 @@ const Form = ({setDataForm, imageChange}) => {
 
             <div>
                 <p
-                    className={'text-start font-bold text-sm block'}>
+                    className={'text-start font-bold text-sm block leading-loose'}>
                     Subtitulo</p>
-                <div
-                    className={'flex gap-2'}>
+                <div>
                     <form action=""
                           method={'POST'}>
                         <label htmlFor="subtitulo"></label>
                         <input
                             type="text"
                             placeholder={'Variedades - 100 unidades'}
-                            className={' border-1 rounded '}
+                            className={' border border-gray-300 rounded w-full h-8 mb-3 p-2'}
                             name="subtitulo"
                             value={localData.subtitulo}
                             onChange={handleChange}
@@ -101,14 +109,14 @@ const Form = ({setDataForm, imageChange}) => {
                 <p
                     className={'text-start font-bold text-sm block'}>
                     Precio normal</p>
-                <div className={'flex gap-2'}>
+                <div>
                     <form action=""
                           method={'POST'}>
                         <label htmlFor="precio"></label>
                         <input
-                            type={'number'}
+                            type={'text'}
                             placeholder={'Precio normal'}
-                            className={'bg-white border-1 border-black rounded'}
+                            className={'bg-white border border-gray-300 rounded w-full h-8 mb-3 p-2'}
                             name="precioNormal"
                             value={localData.precioNormal}
                             onChange={handleChange}
@@ -118,15 +126,15 @@ const Form = ({setDataForm, imageChange}) => {
             </div>
 
             <div>
-                <h4 className={'text-start font-bold text-sm'}>
+                <h4 className={'text-start font-bold text-sm leading-loose'}>
                     Precio Oferta
                 </h4>
-                <div className={'flex gap-2'}>
+                <div>
                     <form action="">
                         <label htmlFor="precioOferta"></label>
-                        <input className={'bg-white border-1 border-black rounded '}
+                        <input className={'bg-white border border-gray-300 rounded h-8 p-2 mb-3 w-full'}
                                type="text"
-                               placeholder={'precioOferta'}
+                               placeholder={'Precio Oferta'}
                                name="precioOferta"
                                value={localData.precioOferta}
                                onChange={handleChange}
@@ -136,15 +144,20 @@ const Form = ({setDataForm, imageChange}) => {
             </div>
 
             <div>
-                <div className={'mt-6 items-start flex'}>
+                <div className={'w-full'}>
                     <form action="" method={'post'} id='imgForm'>
                         <div>
 
-                            <label
-                                htmlFor="imgUpload"
-                                className={'bg-white border-1 border-black rounded p-2 hover:bg-blue-300 focus:bg-blue-400'}>
-                            >Subir Imagen</label>
+                            <button
+                                type={'button'}
+                                onClick={botonClick}
+                                className={'bg-white border border-gray-300 rounded w-full h-8 my-3 cursor-pointer hover:bg-gray-50'}
+                            >
+                                Subir Imagen
+                            </button>
+
                             <input
+                                ref={imgInputRef}
                                 id="imgUpload"
                                 type="file"
                                 accept="image/*"
