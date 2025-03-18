@@ -4,7 +4,15 @@ import Preview from "./assets/components/preview.jsx";
 import {useState} from "react";
 import html2canvas from "html2canvas";
 import Header from "./assets/components/appHeader.jsx";
+import Login from "../backEnd/src/pages/Login.jsx";
+
 function App(){
+
+    return(
+        <div className="App"> 
+            <Login/>
+        </div>
+    )
 
     function formatearPrecios(numero){
         return Number(numero).toLocaleString('es-CL');
