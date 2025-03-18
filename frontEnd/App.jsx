@@ -1,4 +1,5 @@
 import './App.css';
+/* import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'; */
 import Form from "./assets/components/form.jsx";
 import Preview from "./assets/components/preview.jsx";
 import {useState} from "react";
@@ -8,11 +9,20 @@ import Login from "../backEnd/src/pages/Login.jsx";
 
 function App(){
 
-    return(
+    /* return(
+        <Router>
+        <Switch>
+          <Route path="/login" component={Login} />
+
+        </Switch>
+      </Router>
+    ); */
+
+    /* return(
         <div className="App"> 
             <Login/>
         </div>
-    )
+    ) */
 
     // function formatearPrecios(numero){
     //     return Number(numero).toLocaleString('es-CL');
