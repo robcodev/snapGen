@@ -1,34 +1,25 @@
 import './App.css';
-/* import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'; */
-import Form from "./assets/components/form.jsx";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+/* import Form from "./assets/components/form.jsx";
 import Preview from "./assets/components/preview.jsx";
 import {useState} from "react";
 import html2canvas from "html2canvas";
-import Header from "./assets/components/appHeader.jsx";
+import Header from "./assets/components/appHeader.jsx"; */
 import Login from "../backEnd/src/pages/Login.jsx";
+import Home from "../backEnd/src/pages/Home.jsx";
 
 function App(){
 
-    /* return(
+    return(
         <Router>
-        <Switch>
-          <Route path="/login" component={Login} />
+            <Routes>
+                <Route path="/login" element={<Login />} />
+                <Route path="/" element={<Home />} />
+            </Routes>
+        </Router>
+    );
 
-        </Switch>
-      </Router>
-    ); */
-
-    /* return(
-        <div className="App"> 
-            <Login/>
-        </div>
-    ) */
-
-    // function formatearPrecios(numero){
-    //     return Number(numero).toLocaleString('es-CL');
-    // }
-
-    const [dataForm, setDataForm] = useState({
+    /* const [dataForm, setDataForm] = useState({
         titulo: "",
         subtitulo: "",
         descripcion: "",
@@ -104,7 +95,12 @@ function App(){
 
         </section>
 
-    </>
+    </> */
+
+    // function formatearPrecios(numero){
+    //     return Number(numero).toLocaleString('es-CL');
+    // }
+
 }
 
 export default App
