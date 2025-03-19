@@ -4,7 +4,13 @@ import {useEffect} from "react";
 
 const Preview = ({dataForm}) => {
 
-    const AjusteFuentes = ()=>{
+    const AjusteFuentes = ()=> {
+
+        // quiero que las fuentes mantengas un tamaño a escala con el contenedor
+        // Definir el contenedor
+        // Definir cuanto tiene que medir
+        // Capturar los elementos
+        //
 
             console.log('ajustando fuentes...');
             const selector = ".autoResize"
